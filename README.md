@@ -12,7 +12,7 @@ zero-trust network isolation, modern TLS enforcement, and OWASP WAF v2 security.
 
 ## Architecture Overview
 
-[ Internet Traffic ]
+                    [ Internet Traffic ]
                            │
                            ▼ (Port 80 / HTTP)
                [ Standard Public IP ]
@@ -60,17 +60,21 @@ zero-trust network isolation, modern TLS enforcement, and OWASP WAF v2 security.
 
     ---
 
-## Key Engineering & SRE Highlights
+ Key Engineering & SRE Highlights
 
-- **Remote State Management:** Configured secure Terraform remote backend on Azure Blob Storage with automated state-locking via Azure Storage leases.
-- **Strict Tier-to-Tier Network Security:** Isolated tiers using dedicated Network Security Groups (NSGs). Web tier only accepts App Gateway traffic, App tier only accepts Web tier traffic, and Database tier rejects all direct external access.
-- **FinOps Optimization:** Managed regional quota constraints by tuning compute SKUs (`Standard_B2s_v2` single-instance baseline) and PostgreSQL Flexible Server (`B_Standard_B1ms`) without sacrificing multi-tier separation.
-- **Dynamic Secrets Engine:** Azure Key Vault securely auto-generates database administrative credentials with Key Vault Access Policies and injects them directly during provisioning.
-- **Zero-Downtime Health Probing:** End-to-end health check chain configured across App Gateway (Layer 7 Probe) and Internal Load Balancer (TCP/HTTP Probe).
+- Remote State Management:** Configured secure Terraform remote backend on Azure Blob Storage with automated state-locking via Azure Storage leases.
+- 
+- Strict Tier-to-Tier Network Security:** Isolated tiers using dedicated Network Security Groups (NSGs). Web tier only accepts App Gateway traffic, App tier only accepts Web tier traffic, and Database tier rejects all direct external access.
+- 
+- FinOps Optimization:** Managed regional quota constraints by tuning compute SKUs (`Standard_B2s_v2` single-instance baseline) and PostgreSQL Flexible Server (`B_Standard_B1ms`) without sacrificing multi-tier separation.
+- 
+- Dynamic Secrets Engine:** Azure Key Vault securely auto-generates database administrative credentials with Key Vault Access Policies and injects them directly during provisioning.
+- 
+- Zero-Downtime Health Probing:** End-to-end health check chain configured across App Gateway (Layer 7 Probe) and Internal Load Balancer (TCP/HTTP Probe).
 
 ---
 
-## Directory Structure
+```text
 
 azure-3tier-production-iac/
 ├── environments/
@@ -86,20 +90,20 @@ azure-3tier-production-iac/
 │   └── security/              # Azure Key Vault, Secrets, NSGs
 ├── .gitignore
 └── README.md
-
+```
 
 
 
 ---
 
-## Deployment Instructions
+# Deployment Instructions
 
-### Prerequisites
+# Prerequisites
 1. Azure CLI (`az login`)
 2. Terraform `>= 1.5.0`
 3. Active Azure Subscription
 
-### Steps
+#Steps
 ```bash
 # 1. Clone repository
 git clone [https://github.com/avinash-ingle-sre/azure-3tier-production-iac.git](https://github.com/avinash-ingle-sre/azure-3tier-production-iac.git)
