@@ -23,12 +23,12 @@ resource "azurerm_private_dns_zone_virtual_network_link" "postgres_vnet_link" {
 
 # ४. Azure Database for PostgreSQL Flexible Server
 resource "azurerm_postgresql_flexible_server" "postgres" {
-  name                   = "psql-3tier-prod-${random_string.db_suffix.result}"
-  resource_group_name    = var.resource_group_name
-  location               = var.location
-  version                = "15"
-  delegated_subnet_id    = var.db_subnet_id
-  private_dns_zone_id    = azurerm_private_dns_zone.postgres_dns.id
+  name                = "psql-3tier-prod-${random_string.db_suffix.result}"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  version             = "15"
+  delegated_subnet_id = var.db_subnet_id
+  private_dns_zone_id = azurerm_private_dns_zone.postgres_dns.id
 
   # हा महत्त्वाचा फिक्स: VNet वापरताना पब्लिक ॲक्सेस स्पष्टपणे बंद करावा लागतो
   public_network_access_enabled = false

@@ -14,7 +14,7 @@ variable "appgw_subnet_id" {
 }
 
 variable "tags" {
-  type        = map(string)
+  type = map(string)
   default = {
     Environment = "Production"
     ManagedBy   = "Terraform"

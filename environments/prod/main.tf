@@ -67,5 +67,5 @@ module "monitoring" {
   location            = azurerm_resource_group.main.location
   appgw_id            = module.appgw.appgw_id
   web_vmss_id         = module.compute.web_vmss_id
-  tags                = local.common_tags
+  tags                = var.tags
 }
