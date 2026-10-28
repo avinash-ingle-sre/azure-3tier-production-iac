@@ -10,6 +10,8 @@ zero-trust network isolation, modern TLS enforcement, and OWASP WAF v2 security.
 
 ---
 
+<img width="1676" height="895" alt="image" src="https://github.com/user-attachments/assets/8a14828d-bf32-4261-8fa1-2b67ffa1861e" />
+
 ## Architecture Overview
 
                     [ Internet Traffic ]
