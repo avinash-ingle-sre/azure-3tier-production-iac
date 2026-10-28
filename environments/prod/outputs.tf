@@ -14,3 +14,5 @@ output "database_fqdn" {
 output "internal_lb_ip" {
   value = module.compute.internal_lb_ip
 }
+
+# CI Automation Trigger Test
