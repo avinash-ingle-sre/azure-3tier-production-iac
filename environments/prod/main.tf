@@ -59,3 +59,13 @@ module "compute" {
 
   depends_on = [module.networking, module.database, module.appgw]
 }
+
+# Monitoring & Observability Module
+module "monitoring" {
+  source              = "../../modules/monitoring"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
+  appgw_id            = module.appgw.appgw_id
+  web_vmss_id         = module.compute.web_vmss_id
+  tags                = local.common_tags
+}
