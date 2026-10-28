@@ -35,7 +35,6 @@ module "database" {
   db_subnet_id        = module.networking.db_subnet_id
   admin_username      = module.security.db_admin_username
   admin_password      = module.security.db_admin_password
-  db_name             = "productiondb"
 
   depends_on = [module.networking, module.security]
 }
@@ -56,9 +55,6 @@ module "compute" {
   web_subnet_ids        = module.networking.web_subnet_ids
   app_subnet_ids        = module.networking.app_subnet_ids
   db_host               = module.database.db_server_fqdn
-  db_name               = module.database.db_name
-  db_user               = module.security.db_admin_username
-  db_password           = module.security.db_admin_password
   appgw_backend_pool_id = module.appgw.backend_pool_id
 
   depends_on = [module.networking, module.database, module.appgw]

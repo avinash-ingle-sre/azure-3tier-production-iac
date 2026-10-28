@@ -10,52 +10,33 @@ variable "location" {
 
 variable "web_subnet_ids" {
   type        = list(string)
-  description = "Web Subnet IDs for Web VMSS"
+  description = "Subnet IDs for Web Tier VMSS"
 }
 
 variable "app_subnet_ids" {
   type        = list(string)
-  description = "App Subnet IDs for App VMSS"
+  description = "Subnet IDs for App Tier VMSS and ILB"
 }
 
 variable "db_host" {
   type        = string
-  description = "PostgreSQL FQDN"
-}
-
-variable "db_name" {
-  type        = string
-  description = "PostgreSQL Database Name"
-}
-
-variable "db_user" {
-  type        = string
-  description = "PostgreSQL Admin Username"
-}
-
-variable "db_password" {
-  type        = string
-  description = "PostgreSQL Admin Password"
-  sensitive   = true
+  description = "FQDN of PostgreSQL Server"
 }
 
 variable "admin_username" {
   type        = string
+  description = "Admin username for VMSS instances"
   default     = "azureuser"
-  description = "Admin SSH username for VMs"
-}
-
-variable "tags" {
-  type        = map(string)
-  default = {
-    Environment = "Production"
-    ManagedBy   = "Terraform"
-    Project     = "3Tier-Azure"
-  }
 }
 
 variable "appgw_backend_pool_id" {
   type        = string
+  description = "Application Gateway Backend Address Pool ID"
   default     = null
-  description = "App Gateway Backend Address Pool ID for Web VMSS"
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags to be applied to compute resources"
+  default     = {}
 }
